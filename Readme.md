@@ -161,3 +161,20 @@
    - 延遲後，圖示縮放回原始大小。
 5. 重複：每次點擊都重複這個過程，但使用不同的顏色。
 
+＃ accelerateLongPressGesture.swift
+
+1. **長按加速旋轉**：
+   - 使用 `DragGesture(minimumDistance: 0)` 來檢測長按。
+   - 當長按開始時，調用 `startAccelerating()` 函數。
+   - `rotationSpeed` 變數控制旋轉速度。
+
+2. **放開後減速**：
+   - 當手指離開屏幕時，調用 `startDecelerating()` 函數。
+   - 旋轉速度慢慢降低到零。
+
+3. **持續旋轉更新**：
+   - 在 `onAppear` 中設置一個計時器，每 0.01 秒調用 `updateRotation()` 一次。
+   - `updateRotation()` 函數根據當前的 `rotationSpeed` 更新旋轉角度。
+
+4. **平滑的加速和減速動畫**：
+   - 使用 `.easeIn` 和 `.easeOut` 動畫來實現平滑的加速和減速效果。
