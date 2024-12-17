@@ -178,3 +178,109 @@
 
 4. **平滑的加速和減速動畫**：
    - 使用 `.easeIn` 和 `.easeOut` 動畫來實現平滑的加速和減速效果。
+  
+
+# WebView.swift
+
+
+## 基本結構
+
+**核心元件**
+- 這是一個 SwiftUI 視圖，使用 `struct ContentView: View` 定義。
+- 主要功能是創建一個可以打開網頁視圖的按鈕介面。
+
+## 狀態管理
+
+**@State 變數**
+```swift
+@State private var showWebView = false
+```
+- 使用 `@State` 屬性包裝器來管理視圖的狀態。
+- `showWebView` 是一個布林值，控制網頁視圖的顯示和隱藏。
+- 當值改變時，SwiftUI 會自動重新渲染相關視圖。
+
+## 視圖結構
+
+**按鈕元件**
+```swift
+Button(action: {
+    showWebView.toggle()
+}) {
+    Text("My First Web View")
+}
+```
+- 創建一個標準的 SwiftUI 按鈕。
+- `action` 閉包定義按鈕被點擊時的行為。
+- `toggle()` 方法用於切換 `showWebView` 的布林值。
+- 按鈕文字使用 `Text` 視圖顯示。
+
+## 模態展示
+
+**Sheet 修飾符**
+```swift
+.sheet(isPresented: $showWebView){
+    WebView(url: URL(string: "https://www.fcu.edu.tw")!)
+}
+```
+- `.sheet` 修飾符用於模態展示網頁視圖。
+- `isPresented` 參數使用 `$` 語法綁定 `showWebView` 狀態。
+- 當 `showWebView` 變為 true 時，sheet 會從底部滑上來。
+- 使用者可以通過下滑關閉 sheet。
+
+## WebView 整合
+
+**URL 處理**
+```swift
+WebView(url: URL(string: "https://www.fcu.edu.tw")!)
+```
+- 創建一個自定義的 `WebView` 結構體實例。
+- 使用 `URL` 初始化器處理網址字串。
+- `!` 表示強制解包，假設 URL 一定有效。
+
+## 程式執行流程
+
+1. **初始狀態**：
+   - 視圖載入時，`showWebView` 為 false。
+   - 畫面上只顯示按鈕。
+
+2. **用戶互動**：
+   - 用戶點擊按鈕。
+   - 觸發 `action` 閉包。
+   - `showWebView.toggle()` 執行。
+
+3. **狀態變化**：
+   - `showWebView` 變為 true。
+   - SwiftUI 檢測到狀態改變。
+   - 觸發視圖更新。
+
+4. **視圖更新**：
+   - `.sheet` 修飾符檢測到 `showWebView` 為 true。
+   - 模態視圖從底部滑入。
+   - WebView 載入指定 URL 的內容。
+
+5. **關閉流程**：
+   - 用戶下滑關閉 sheet。
+   - `showWebView` 自動設回 false。
+   - 視圖回到初始狀態。
+
+## 預覽支援
+
+```swift
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
+```
+- 提供 Xcode 預覽功能支援。
+- 允許在開發時即時預覽視圖外觀。
+- 不影響實際執行時的功能。
+
+## 註解程式碼
+```swift
+//WebView(url: URL(string: "https://module-7-s3-vikash.s3.amazonaws.com/2021-11-19.png")!)
+```
+- 提供了一個替代的 URL 配置。
+- 當前被註解掉，不會執行。
+- 展示了如何載入其他類型的網路資源。
+
