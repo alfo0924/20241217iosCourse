@@ -161,7 +161,7 @@
    - 延遲後，圖示縮放回原始大小。
 5. 重複：每次點擊都重複這個過程，但使用不同的顏色。
 
-＃ accelerateLongPressGesture.swift
+# accelerateLongPressGesture.swift
 
 1. **長按加速旋轉**：
    - 使用 `DragGesture(minimumDistance: 0)` 來檢測長按。
