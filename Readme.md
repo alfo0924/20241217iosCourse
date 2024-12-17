@@ -1,5 +1,5 @@
 
-＃lossGesture.swift 
+＃ lossGesture.swift 
 
 ## 狀態管理
 
@@ -55,7 +55,7 @@
 
 
 
-#ridiculousLossGesture.swift
+# ridiculousLossGesture.swift
 
 
 1. **背景顏色切換**：
