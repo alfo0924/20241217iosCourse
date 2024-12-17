@@ -1,5 +1,5 @@
 
-＃ lossGesture.swift 
+# lossGesture.swift 
 
 ## 狀態管理
 
